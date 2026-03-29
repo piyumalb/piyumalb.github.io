@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasan Piyumal | Profile Links</title>
+    
+    <!-- Tab uñt'aya -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Tailwind CSS ukax -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', 
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#000000',
+                        cardBg: 'rgba(5, 5, 8, 0.95)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Qillqanaka -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base styles */
+        body { 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+            background-color: #000000;
+            color: #ffffff;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Ambient Background Glow */
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(100px);
+            opacity: 0.1; /* Very dark background glow */
+        }
+        .glow-1 {
+            width: 70vw; height: 70vw;
+            top: -20%; left: -10%;
+            background: rgba(90, 30, 190, 0.2);
+        }
+        .glow-2 {
+            width: 60vw; height: 60vw;
+            bottom: -10%; right: -10%;
+            background: rgba(30, 90, 190, 0.2);
+        }
+
+        /* Premium Glass Container */
+        .glass-container {
+            background: var(--cardBg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.99);
+            border-radius: 2.5rem;
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 3rem;
+        }
+
+        /* Premium iOS-Style Buttons (White lines removed) */
+        .btn-premium {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform, box-shadow;
+            transform: translateZ(0); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-4px) scale(1.015) translateZ(0);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.8);
+            filter: brightness(1.1);
+        }
+
+        /* Icon Pulse Animation */
+        .btn-premium:hover .hover-pulse {
+            transform: scale(1.1);
+        }
+        
+        /* Arrow move animation */
+        .btn-premium:hover .hover-arrow {
+            transform: translateX(4px);
+            color: #ffffff !important;
+        }
+
+        /* Initial Load Animation */
+        .reveal-up { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+        }
+        @keyframes reveal { 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        
+        /* Smooth Cover Animation */
+        .cover-animate {
+            animation: panImage 30s ease-in-out infinite alternate;
+        }
+        @keyframes panImage {
+            0% { transform: scale(1.05) translateY(0); }
+            100% { transform: scale(1.15) translateY(-4%); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center py-10 px-4 relative z-0">
+
+    <!-- Ambient Glow Background -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- Main Premium Glass Container -->
+    <main class="glass-container flex flex-col items-center reveal-up z-10">
+        
+        <!-- Cover Image -->
+        <div class="absolute top-0 left-0 w-full h-40 overflow-hidden z-0 pointer-events-none rounded-t-[2.5rem]">
+            <div class="absolute inset-0 bg-cover bg-center cover-animate" style="background-image: url('cover.jpg');"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(5,5,8,0.7)] to-[rgba(5,5,8,0.95)] z-10"></div>
+        </div>
+
+        <!-- Profile Photo -->
+        <div class="relative mb-3 mt-24 z-10 px-6 w-full flex justify-center">
+            <div class="w-[110px] h-[110px] rounded-full p-1 bg-[#050508] border border-white/5 shadow-2xl relative flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 bg-[#08080a] rounded-full"></div>
+                <img src="profileimage.jpg" class="w-full h-full object-cover rounded-full relative z-10 pointer-events-none" alt="">
+            </div>
+        </div>
+
+        <!-- Name & Bio -->
+        <div class="text-center mb-8 w-full px-6 relative z-10 flex flex-col items-center">
+            <div class="flex items-center justify-center gap-1.5 mb-1.5">
+                <h1 class="text-[24px] font-extrabold tracking-tight text-white drop-shadow-md">Pasan Piyumal</h1>
+            </div>
+            <p class="text-[13px] text-gray-400 font-medium tracking-[0.02em] uppercase">
+                Graphic Designer & Developer
+            </p>
+        </div>
+
+        <!-- Links Container -->
+        <div class="w-full space-y-4 flex flex-col items-center relative z-10 px-5">
+
+            <!-- P.Design Creative Studios -->
+            <a href="https://pdesigncreativestudios.on.drv.tw/P.Design-C/" target="_blank" class="group w-full p-[18px] bg-gradient-to-b from-[#d03a62] to-[#f5a75d] text-white rounded-[22px] flex items-center justify-between cursor-pointer btn-premium">
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-full bg-black/20 flex items-center justify-center shrink-0 shadow-inner hover-pulse transition-transform duration-300">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[20px] h-[20px] text-white drop-shadow-md">
+                            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-left drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        <h3 class="font-bold text-[16px] text-white leading-tight">P.Design Studios</h3>
+                        <p class="text-[11px] text-white/90 font-medium tracking-wide mt-0.5">Graphic & Web Design Services</p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-black/20 group-hover:bg-black/30 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-white hover-arrow transition-all duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </div>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com/piyumalbherath" target="_blank" class="group w-full p-[18px] bg-gradient-to-b from-[#3f698c] to-[#0b1f36] rounded-[22px] flex items-center justify-between cursor-pointer btn-premium">
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-full bg-black/30 flex items-center justify-center text-white shrink-0 shadow-inner hover-pulse transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[22px] h-[22px] drop-shadow-md"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </div>
+                    <div class="text-left drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        <h3 class="font-bold text-white text-[16px]">Instagram</h3>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white/60 hover-arrow transition-all duration-300"><path d="m9 18 6-6-6-6"/></svg>
+                </div>
+            </a>
+
+            <!-- TikTok (White line fixed with darker gray gradient) -->
+            <a href="https://www.tiktok.com/@pasanpiyumal_" target="_blank" class="group w-full p-[18px] bg-gradient-to-b from-[#151515] to-[#454545] rounded-[22px] flex items-center justify-between cursor-pointer btn-premium">
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0 shadow-inner hover-pulse transition-transform duration-300">
+                        <svg class="w-[20px] h-[20px] drop-shadow-md" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                        </svg>
+                    </div>
+                    <div class="text-left drop-shadow-[0_2px_5px_rgba(0,0,0,0.9)]">
+                        <h3 class="font-bold text-white text-[16px]">TikTok</h3>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white/60 hover-arrow transition-all duration-300"><path d="m9 18 6-6-6-6"/></svg>
+                </div>
+            </a>
+
+            <!-- X / Twitter -->
+            <a href="https://x.com/piyumalbherath" target="_blank" class="group w-full p-[18px] bg-gradient-to-b from-[#fa6b41] to-[#f5a036] rounded-[22px] flex items-center justify-between cursor-pointer btn-premium">
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-full bg-black/20 flex items-center justify-center text-white shrink-0 shadow-inner hover-pulse transition-transform duration-300">
+                        <svg class="w-[18px] h-[18px] drop-shadow-md" viewBox="0 0 1200 1227" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/>
+                        </svg>
+                    </div>
+                    <div class="text-left drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        <h3 class="font-bold text-white text-[16px]">X (Twitter)</h3>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white/60 hover-arrow transition-all duration-300"><path d="m9 18 6-6-6-6"/></svg>
+                </div>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/piyumalbherath" target="_blank" class="group w-full p-[18px] bg-gradient-to-b from-[#ad915a] to-[#d2bd8c] rounded-[22px] flex items-center justify-between cursor-pointer btn-premium">
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-full bg-black/20 flex items-center justify-center text-white shrink-0 shadow-inner hover-pulse transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[22px] h-[22px] drop-shadow-md"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </div>
+                    <div class="text-left drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        <h3 class="font-bold text-white text-[16px]">GitHub</h3>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white/60 hover-arrow transition-all duration-300"><path d="m9 18 6-6-6-6"/></svg>
+                </div>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/piyumal-b-herath-aa85853b9/" target="_blank" class="group w-full p-[18px] bg-gradient-to-b from-[#207b9e] to-[#082a38] rounded-[22px] flex items-center justify-between cursor-pointer btn-premium">
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-full bg-black/30 flex items-center justify-center text-white shrink-0 shadow-inner hover-pulse transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[20px] h-[20px] drop-shadow-md"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    </div>
+                    <div class="text-left drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        <h3 class="font-bold text-white text-[16px]">LinkedIn</h3>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white/60 hover-arrow transition-all duration-300"><path d="m9 18 6-6-6-6"/></svg>
+                </div>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/94704227925" target="_blank" class="group w-full p-[18px] bg-gradient-to-b from-[#2e9c4b] to-[#0a3818] text-white rounded-[22px] flex items-center justify-between cursor-pointer btn-premium">
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-full bg-black/30 flex items-center justify-center shrink-0 shadow-inner hover-pulse transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="w-[22px] h-[22px] text-white drop-shadow-md"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                    </div>
+                    <div class="text-left drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        <h3 class="font-bold text-[16px] text-white leading-tight">Send a Message</h3>
+                        <p class="text-[11px] text-white/70 font-medium tracking-wide mt-0.5">Let's chat on WhatsApp</p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white/60 hover-arrow transition-all duration-300"><path d="m9 18 6-6-6-6"/></svg>
+                </div>
+            </a>
+            
+        </div>
+
+        <!-- QR Code Section -->
+        <div class="mt-12 flex flex-col items-center relative z-10 pointer-events-none">
+            <div class="p-3 bg-[#121215]/80 backdrop-blur-md rounded-[20px] shadow-xl flex items-center justify-center" style="min-width: 120px; min-height: 120px;">
+                <img src="qr%20code.png" alt="QR Code" class="w-[100px] h-[100px] object-contain rounded-xl opacity-80" loading="lazy">
+            </div>
+            <span class="text-[10px] text-gray-500 mt-4 font-bold tracking-[0.2em] uppercase">Scan Me</span>
+        </div>
+
+        <!-- Social Icons Footer -->
+        <div class="mt-8 flex gap-7 relative z-10 opacity-70">
+            <a href="https://x.com/piyumalbherath" target="_blank" class="hover:text-white hover:-translate-y-1 hover:opacity-100 transition-all duration-300">
+                <svg class="w-[20px] h-[20px]" viewBox="0 0 1200 1227" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/piyumal-b-herath-aa85853b9/" target="_blank" class="hover:text-white hover:-translate-y-1 hover:opacity-100 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[20px] h-[20px]"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://github.com/piyumalbherath" target="_blank" class="hover:text-white hover:-translate-y-1 hover:opacity-100 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[20px] h-[20px]"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+            <a href="mailto:piyumalbherath@gmail.com" class="hover:text-white hover:-translate-y-1 hover:opacity-100 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[20px] h-[20px]"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+        document.onkeydown = function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) {
+                e.preventDefault(); return false;
+            }
+        };
+    </script>
+</body>
+</html>
