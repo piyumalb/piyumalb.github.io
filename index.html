@@ -2,11 +2,11 @@
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport lock: Zooming ebong horizontal scroll sampurnayen block krar jonne -->
+    <!-- Senotlelo sa go lebelela: thibela go godiša eupša dumelela go thelela ga tlhago -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Pasan Piyumal | Profile Links</title>
     
-    <!-- Tab icon -->
+    <!-- Aekhone ya thebo -->
     <link rel="icon" type="image/png" href="logo.png">
     
     <!-- Tailwind CSS -->
@@ -28,26 +28,26 @@
         }
     </script>
     
-    <!-- Google Qillqanaka -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Extreme Side Lock & Smoothness Fixes */
+        /* Diresete tša lefase le thelelo */
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
 
-        html, body {
+        html {
             width: 100%;
-            max-width: 100vw;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden; /* Side lock kora */
             background-color: #000000;
         }
 
         body { 
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Fihla scrollbar ya go rapalala ka polokego */
             font-family: 'Inter', sans-serif;
             color: #ffffff;
             min-height: 100vh;
@@ -57,12 +57,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Zoom lock krar jonne */
-            touch-action: pan-y;
-            transform: translate3d(0,0,0);
         }
 
-        /* Ambient Glow - Fixed performance */
+        /* Seetša sa Tikologo */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
@@ -83,7 +80,7 @@
             background: radial-gradient(circle, rgba(30, 90, 190, 0.4) 0%, transparent 70%);
         }
 
-        /* Main Container - NO BORDERS, LOCKED SIDES */
+        /* Setšhelo se Segolo */
         .glass-container {
             background: #060609;
             border: none !important;
@@ -95,16 +92,15 @@
             overflow: hidden;
             padding-bottom: 2rem;
             margin-top: 3rem;
-            margin-bottom: 0.5rem; /* Icons walin passe site eka end krar jonne */
+            margin-bottom: 0.5rem; 
             will-change: transform;
             transform: translate3d(0,0,0);
             -webkit-mask-image: -webkit-radial-gradient(white, black);
         }
 
-        /* Cover Area Fix - Sudu ira sampurnayen wahanur jonne zoom kara */
+        /* Sekhurumelo sa seswantšho */
         .cover-wrapper {
             position: absolute;
-            /* Negative margin eken edges wahala damma */
             top: -5px; 
             left: -5px;
             right: -5px;
@@ -120,7 +116,7 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            transform: scale(1.1); /* Zoomed in to hide borders */
+            transform: scale(1.1); 
             animation: panImage 50s ease-in-out infinite alternate;
         }
         
@@ -129,7 +125,7 @@
             100% { transform: scale(1.15) translate3d(-2%, -2%, 0); }
         }
 
-        /* Ultra smooth buttons transition */
+        /* Ditshekamelo tša konopo tše thelelago */
         .btn-ultra {
             position: relative;
             overflow: hidden;
@@ -145,12 +141,12 @@
             filter: brightness(1.1);
         }
 
-        /* Scrollbar lukanur jonne */
+        /* Fihla scrollbar ka go bonagala eupša dumelela go thelela */
         ::-webkit-scrollbar {
             display: none;
         }
 
-        /* Reveal animations */
+        /* Utolla ditshwantsho tše di phelago */
         .reveal-up { 
             opacity: 0; 
             transform: translateY(20px) translate3d(0,0,0); 
@@ -160,30 +156,29 @@
             to { opacity: 1; transform: translateY(0) translate3d(0,0,0); } 
         }
 
-        /* Site end padding */
+        /* Padding ya tlase go dumelela go thelela ka botlalo */
         .footer-end {
-            height: 15px; /* Oyage 0.5cm limit eka */
+            height: 25px; 
             width: 100%;
         }
     </style>
 </head>
 <body class="py-4">
 
-    <!-- Ambient glow background elements -->
+    <!-- Dielemente tša bokamorago bja seetša sa tikologo -->
     <div class="ambient-glow glow-1"></div>
     <div class="ambient-glow glow-2"></div>
 
-    <!-- Side-locked container -->
+    <!-- Setšhelo sa diteng se segolo -->
     <main class="glass-container flex flex-col items-center reveal-up z-10">
         
-        <!-- Seamless cover overlap -->
+        <!-- Sekhurumelo sa seswantšho -->
         <div class="cover-wrapper">
             <div class="cover-animate" style="background-image: url('cover.jpg');"></div>
-            <!-- Dark gradient overlay -->
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#060609] z-10"></div>
         </div>
 
-        <!-- Profile image -->
+        <!-- Seswantšho sa porofaele -->
         <div class="relative mb-4 mt-24 z-10 px-6 w-full flex justify-center">
             <div class="w-[110px] h-[110px] rounded-full p-1 bg-[#060609] shadow-2xl relative flex items-center justify-center">
                 <div class="absolute inset-0 bg-black rounded-full"></div>
@@ -191,7 +186,7 @@
             </div>
         </div>
 
-        <!-- Identity -->
+        <!-- Boitsebišo -->
         <div class="text-center mb-10 w-full px-8 relative z-10 flex flex-col items-center">
             <h1 class="text-[25px] font-black tracking-tight text-white mb-1 drop-shadow-lg">Pasan Piyumal</h1>
             <p class="text-[11px] text-gray-500 font-bold tracking-[0.3em] uppercase opacity-70">
@@ -199,7 +194,7 @@
             </p>
         </div>
 
-        <!-- Links stack -->
+        <!-- Mokgobo wa dikgokagano -->
         <div class="w-full space-y-4 flex flex-col items-center relative z-10 px-6 gap-3.5">
 
             <a href="https://pdesigncreativestudios.on.drv.tw/P.Design-C/" target="_blank" class="group w-full p-5 bg-gradient-to-b from-[#d03a62] to-[#f5a75d] text-white rounded-[22px] flex items-center justify-between cursor-pointer btn-ultra">
@@ -254,6 +249,17 @@
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-white/60"><path d="m9 18 6-6-6-6"/></svg>
             </a>
+            
+            <!-- Kgokagano ya LinkedIn -->
+            <a href="https://www.linkedin.com/in/piyumal-b-herath-aa85853b9/" target="_blank" class="group w-full p-5 bg-gradient-to-b from-[#0077b5] to-[#004471] rounded-[22px] flex items-center justify-between cursor-pointer btn-ultra">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center text-white shrink-0 shadow-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </div>
+                    <h3 class="font-extrabold text-white text-[15px] drop-shadow-md">LinkedIn</h3>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-white/60"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
 
             <a href="https://wa.me/94704227925" target="_blank" class="group w-full p-5 bg-gradient-to-b from-[#2fa34e] to-[#0a3a19] text-white rounded-[22px] flex items-center justify-between cursor-pointer btn-ultra">
                 <div class="flex items-center gap-4">
@@ -270,7 +276,7 @@
             
         </div>
 
-        <!-- Scan code area -->
+        <!-- Karolo ya khoutu ya QR -->
         <div class="mt-12 flex flex-col items-center relative z-10 pointer-events-none opacity-90">
             <div class="p-3 bg-[#0a0a0d] rounded-[24px] shadow-2xl border border-white/5 flex items-center justify-center" style="min-width: 125px; min-height: 125px;">
                 <img src="qr%20code.png" alt="QR Code" class="w-[90px] h-[90px] object-contain rounded-xl opacity-80" loading="lazy">
@@ -278,7 +284,7 @@
             <span class="text-[9px] text-gray-600 mt-4 font-black tracking-[0.3em] uppercase">Scan to Connect</span>
         </div>
 
-        <!-- Social Icons - End of content -->
+        <!-- Diaekhone tša Leago -->
         <div class="mt-10 flex gap-8 relative z-10">
             <a href="https://x.com/piyumalbherath" target="_blank" class="text-gray-600 hover:text-white transition-all duration-300">
                 <svg class="w-[18px] h-[18px]" viewBox="0 0 1200 1227" fill="currentColor">
@@ -295,11 +301,11 @@
 
     </main>
 
-    <!-- Site eka end wena padding eka -->
+    <!-- Padding ya tlase -->
     <div class="footer-end"></div>
 
     <script>
-        /* Security scripts */
+        /* Mengwalo ya tšhireletšo */
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
         document.onkeydown = function(e) {
             if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) {
@@ -307,21 +313,6 @@
             }
         };
 
-        /* Zoom lock listeners */
-        document.addEventListener('touchstart', function(event) {
-            if (event.touches.length > 1) {
-                event.preventDefault();
-            }
-        }, { passive: false });
-
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-            let now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
     </script>
 </body>
 </html>
