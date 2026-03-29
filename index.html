@@ -2,11 +2,11 @@
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <!-- Senotlelo sa go lebelela: thibela go godiša eupša dumelela go thelela ga tlhago -->
+    <!-- Viewport settings: prevent zoom but allow natural scrolling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Pasan Piyumal | Profile Links</title>
     
-    <!-- Aekhone ya thebo -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     
     <!-- Tailwind CSS -->
@@ -32,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Diresete tša lefase le thelelo */
+        /* Global resets and scrolling */
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
@@ -47,7 +47,7 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Fihla scrollbar ya go rapalala ka polokego */
+            overflow-x: hidden; /* Hide horizontal scrollbar safely */
             font-family: 'Inter', sans-serif;
             color: #ffffff;
             min-height: 100vh;
@@ -59,32 +59,33 @@
             align-items: center;
         }
 
-        /* Seetša sa Tikologo */
+        /* Ambient Glow - Optimized for Performance (Removed heavy filters) */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
             pointer-events: none;
             z-index: -1;
-            filter: blur(80px);
-            opacity: 0.1;
+            /* Replaced expensive filter:blur with lower opacity and pure gradients to eliminate lag */
+            opacity: 0.15; 
             will-change: transform;
+            transform: translateZ(0);
         }
         .glow-1 {
             width: 80vw; height: 80vw;
             top: -20%; left: -10%;
-            background: radial-gradient(circle, rgba(90, 30, 190, 0.4) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(90, 30, 190, 0.8) 0%, transparent 60%);
         }
         .glow-2 {
             width: 80vw; height: 80vw;
             bottom: -20%; right: -10%;
-            background: radial-gradient(circle, rgba(30, 90, 190, 0.4) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(30, 90, 190, 0.8) 0%, transparent 60%);
         }
 
-        /* Setšhelo se Segolo */
+        /* Main Container */
         .glass-container {
             background: #060609;
             border: none !important;
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 1);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8); /* Optimized shadow for better FPS */
             border-radius: 2.8rem;
             width: 90%;
             max-width: 410px;
@@ -95,16 +96,16 @@
             margin-bottom: 0.5rem; 
             will-change: transform;
             transform: translate3d(0,0,0);
-            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            /* Removed -webkit-mask-image as it causes severe lag on Chromium mobile browsers */
         }
 
-        /* Sekhurumelo sa seswantšho */
+        /* Image Cover */
         .cover-wrapper {
             position: absolute;
-            top: -5px; 
-            left: -5px;
-            right: -5px;
-            width: calc(100% + 10px);
+            top: 0; 
+            left: 0;
+            right: 0;
+            width: 100%;
             height: 175px;
             overflow: hidden;
             z-index: 0;
@@ -116,8 +117,8 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            transform: scale(1.1); 
-            animation: panImage 50s ease-in-out infinite alternate;
+            will-change: transform;
+            animation: panImage 40s linear infinite alternate;
         }
         
         @keyframes panImage {
@@ -125,28 +126,27 @@
             100% { transform: scale(1.15) translate3d(-2%, -2%, 0); }
         }
 
-        /* Ditshekamelo tša konopo tše thelelago */
+        /* Smooth Button Hover Effects */
         .btn-ultra {
             position: relative;
             overflow: hidden;
-            transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1), 
-                        filter 0.2s ease;
+            transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1), filter 0.2s ease;
             will-change: transform;
             transform: translate3d(0,0,0); 
             border: none !important;
         }
 
         .btn-ultra:hover {
-            transform: scale(1.01) translateY(-2px) translate3d(0,0,0);
+            transform: scale(1.02) translateY(-2px) translate3d(0,0,0);
             filter: brightness(1.1);
         }
 
-        /* Fihla scrollbar ka go bonagala eupša dumelela go thelela */
+        /* Hide scrollbar but keep functionality */
         ::-webkit-scrollbar {
             display: none;
         }
 
-        /* Utolla ditshwantsho tše di phelago */
+        /* Reveal Animation */
         .reveal-up { 
             opacity: 0; 
             transform: translateY(20px) translate3d(0,0,0); 
@@ -156,7 +156,12 @@
             to { opacity: 1; transform: translateY(0) translate3d(0,0,0); } 
         }
 
-        /* Padding ya tlase go dumelela go thelela ka botlalo */
+        /* Modal specific smooth transitions */
+        #modal-content {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+        }
+        
+        /* Bottom padding for full scroll */
         .footer-end {
             height: 25px; 
             width: 100%;
@@ -165,20 +170,20 @@
 </head>
 <body class="py-4">
 
-    <!-- Dielemente tša bokamorago bja seetša sa tikologo -->
+    <!-- Ambient background elements -->
     <div class="ambient-glow glow-1"></div>
     <div class="ambient-glow glow-2"></div>
 
-    <!-- Setšhelo sa diteng se segolo -->
+    <!-- Main Content Container -->
     <main class="glass-container flex flex-col items-center reveal-up z-10">
         
-        <!-- Sekhurumelo sa seswantšho -->
+        <!-- Image Cover -->
         <div class="cover-wrapper">
             <div class="cover-animate" style="background-image: url('cover.jpg');"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#060609] z-10"></div>
         </div>
 
-        <!-- Seswantšho sa porofaele -->
+        <!-- Profile Image -->
         <div class="relative mb-4 mt-24 z-10 px-6 w-full flex justify-center">
             <div class="w-[110px] h-[110px] rounded-full p-1 bg-[#060609] shadow-2xl relative flex items-center justify-center">
                 <div class="absolute inset-0 bg-black rounded-full"></div>
@@ -186,7 +191,7 @@
             </div>
         </div>
 
-        <!-- Boitsebišo -->
+        <!-- Identity -->
         <div class="text-center mb-10 w-full px-8 relative z-10 flex flex-col items-center">
             <h1 class="text-[25px] font-black tracking-tight text-white mb-1 drop-shadow-lg">Pasan Piyumal</h1>
             <p class="text-[11px] text-gray-500 font-bold tracking-[0.3em] uppercase opacity-70">
@@ -194,10 +199,10 @@
             </p>
         </div>
 
-        <!-- Mokgobo wa dikgokagano -->
+        <!-- Links Stack -->
         <div class="w-full space-y-4 flex flex-col items-center relative z-10 px-6 gap-3.5">
 
-            <a href="https://piyumalb.github.io/.Design/" target="_blank" class="group w-full p-5 bg-gradient-to-b from-[#d03a62] to-[#f5a75d] text-white rounded-[22px] flex items-center justify-between cursor-pointer btn-ultra">
+            <a onclick="showNotification(event, 'This store is currently unavailable.')" class="group w-full p-5 bg-gradient-to-b from-[#d03a62] to-[#f5a75d] text-white rounded-[22px] flex items-center justify-between cursor-pointer btn-ultra">
                 <div class="flex items-center gap-4">
                     <div class="w-10 h-10 rounded-full bg-black/20 flex items-center justify-center shrink-0 shadow-inner">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white">
@@ -250,7 +255,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-white/60"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             
-            <!-- Kgokagano ya LinkedIn -->
+            <!-- LinkedIn Link -->
             <a href="https://www.linkedin.com/in/piyumal-b-herath-aa85853b9/" target="_blank" class="group w-full p-5 bg-gradient-to-b from-[#0077b5] to-[#004471] rounded-[22px] flex items-center justify-between cursor-pointer btn-ultra">
                 <div class="flex items-center gap-4">
                     <div class="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center text-white shrink-0 shadow-inner">
@@ -261,7 +266,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-white/60"><path d="m9 18 6-6-6-6"/></svg>
             </a>
 
-            <a href="https://wa.me/94704227925" target="_blank" class="group w-full p-5 bg-gradient-to-b from-[#2fa34e] to-[#0a3a19] text-white rounded-[22px] flex items-center justify-between cursor-pointer btn-ultra">
+            <a onclick="showNotification(event, 'WhatsApp messaging is currently unavailable.')" class="group w-full p-5 bg-gradient-to-b from-[#2fa34e] to-[#0a3a19] text-white rounded-[22px] flex items-center justify-between cursor-pointer btn-ultra">
                 <div class="flex items-center gap-4">
                     <div class="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center shrink-0 shadow-inner">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-[20px] h-[20px] text-white"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
@@ -276,7 +281,7 @@
             
         </div>
 
-        <!-- Karolo ya khoutu ya QR -->
+        <!-- QR Code Section -->
         <div class="mt-12 flex flex-col items-center relative z-10 pointer-events-none opacity-90">
             <div class="p-3 bg-[#0a0a0d] rounded-[24px] shadow-2xl border border-white/5 flex items-center justify-center" style="min-width: 125px; min-height: 125px;">
                 <img src="qr%20code.png" alt="QR Code" class="w-[90px] h-[90px] object-contain rounded-xl opacity-80" loading="lazy">
@@ -284,7 +289,7 @@
             <span class="text-[9px] text-gray-600 mt-4 font-black tracking-[0.3em] uppercase">Scan to Connect</span>
         </div>
 
-        <!-- Diaekhone tša Leago -->
+        <!-- Social Icons -->
         <div class="mt-10 flex gap-8 relative z-10">
             <a href="https://x.com/piyumalbherath" target="_blank" class="text-gray-600 hover:text-white transition-all duration-300">
                 <svg class="w-[18px] h-[18px]" viewBox="0 0 1200 1227" fill="currentColor">
@@ -301,18 +306,71 @@
 
     </main>
 
-    <!-- Padding ya tlase -->
+    <!-- Notification Modal -->
+    <div id="custom-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 pointer-events-none">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeNotification()"></div>
+        <!-- Modal Card -->
+        <div id="modal-content" class="relative bg-[#0a0a0d] border border-white/10 rounded-[24px] p-6 max-w-[320px] w-[85%] shadow-2xl transform scale-95 opacity-0 transition-all duration-300 flex flex-col items-center text-center pointer-events-auto">
+            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3 class="text-white font-bold text-[18px] mb-2">Notice</h3>
+            <p id="modal-message" class="text-gray-400 text-[13px] leading-relaxed mb-6"></p>
+            <button onclick="closeNotification()" class="w-full py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl font-semibold text-[14px] transition-colors">Got It</button>
+        </div>
+    </div>
+
+    <!-- Bottom Padding -->
     <div class="footer-end"></div>
 
     <script>
-        /* Mengwalo ya tšhireletšo */
+        /* Smooth Notification Logic */
+        function showNotification(e, message) {
+            if(e) e.preventDefault();
+            const modal = document.getElementById('custom-modal');
+            const modalContent = document.getElementById('modal-content');
+            const modalMessage = document.getElementById('modal-message');
+            
+            modalMessage.textContent = message;
+            
+            // Unhide container
+            modal.classList.remove('hidden');
+            
+            // Force browser reflow to enable transition
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+                
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            });
+        }
+
+        function closeNotification() {
+            const modal = document.getElementById('custom-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            // Fade out
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            modal.classList.add('opacity-0');
+            
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            // Hide container after transition
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        /* Security Scripts */
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
         document.onkeydown = function(e) {
             if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) {
                 e.preventDefault(); return false;
             }
         };
-
     </script>
 </body>
 </html>
