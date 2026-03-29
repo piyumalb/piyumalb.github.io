@@ -32,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Jagatik reset ani scrolling */
+        /* Global reset aur scrolling */
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
@@ -47,7 +47,7 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Aadvya scrollbar la surakshitpane lapva */
+            overflow-x: hidden; /* Horizontal scrollbar ko safely chupayein */
             font-family: 'Inter', sans-serif;
             color: #ffffff;
             min-height: 100vh;
@@ -59,14 +59,14 @@
             align-items: center;
         }
 
-        /* Ambient Glow - Atishay anukulit (Kontehi filter nahit, keval CSS gradients) */
+        /* Ambient Glow - Optimized (Koi filter nahi, sirf CSS gradients) */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
             pointer-events: none;
             z-index: -1;
             opacity: 0.12; 
-            /* Hardware acceleration la surakshitpane saksham kara */
+            /* Hardware acceleration ko safely enable karein */
             transform: translateZ(0); 
         }
         .glow-1 {
@@ -80,11 +80,11 @@
             background: radial-gradient(circle, rgba(30, 90, 190, 0.8) 0%, transparent 60%);
         }
 
-        /* Mukhya container */
+        /* Main container */
         .glass-container {
             background: #060609;
             border: none !important;
-            /* Chrome/Brave var uttam FPS sathi anukulit shadow */
+            /* Chrome/Brave par best FPS ke liye optimized shadow */
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.9); 
             border-radius: 2.8rem;
             width: 90%;
@@ -95,22 +95,22 @@
             margin-top: 3rem;
             margin-bottom: 0.5rem; 
             transform: translate3d(0,0,0); /* Hardware acceleration */
-            backface-visibility: hidden; /* Sub-pixel rendering aani edge flickering thambavnyasathi */
+            backface-visibility: hidden; /* Sub-pixel rendering aur edge flickering ko rokne ke liye */
             transform-style: preserve-3d;
         }
 
-        /* Chitra aavaran */
+        /* Image cover */
         .cover-wrapper {
             position: absolute;
             top: -2px; 
             left: -2px;
             right: -2px;
             width: calc(100% + 4px);
-            height: 178px; /* Gap lapvnyasathi thodi vadhiv unchi */
+            height: 178px; /* Gap chupane ke liye thodi extra height */
             overflow: hidden;
             z-index: 0;
             pointer-events: none;
-            background-color: #060609; /* Pandhri resha thambavnyasathi */
+            background-color: #060609; /* Safed line (white line) rokne ke liye */
         }
 
         .cover-animate {
@@ -118,7 +118,7 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            /* Fakt transform animate kara, will-change kaljipurvak vapra */
+            /* Sirf transform animate karein, will-change dhyan se use karein */
             will-change: transform;
             animation: panImage 40s ease-in-out infinite alternate;
         }
@@ -128,11 +128,11 @@
             100% { transform: scale(1.15) translate3d(-2%, -2%, 0); }
         }
 
-        /* Smooth button hover effects - Anukulit */
+        /* Smooth button hover effects - Optimized */
         .btn-ultra {
             position: relative;
             overflow: hidden;
-            /* Shunya lag sathi sope transitions */
+            /* Zero lag ke liye simple transitions */
             transition: transform 0.2s ease-out, filter 0.2s ease-out;
             transform: translateZ(0); 
             border: none !important;
@@ -143,7 +143,7 @@
             filter: brightness(1.15);
         }
 
-        /* Scrollbar lapva pan karyakshamta theva */
+        /* Scrollbar chupayein par functionality rakhein */
         ::-webkit-scrollbar {
             display: none;
         }
@@ -158,12 +158,12 @@
             to { opacity: 1; transform: translateY(0) translateZ(0); } 
         }
 
-        /* Modal vishishta smooth transitions */
+        /* Modal specific smooth transitions */
         #modal-content {
             transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease-out;
         }
         
-        /* Purna scroll sathi khalchi padding */
+        /* Full scroll ke liye bottom padding */
         .footer-end {
             height: 25px; 
             width: 100%;
@@ -176,14 +176,16 @@
     <div class="ambient-glow glow-1"></div>
     <div class="ambient-glow glow-2"></div>
 
-    <!-- Mukhya Content Container -->
+    <!-- Main Content Container -->
     <main class="glass-container flex flex-col items-center reveal-up z-10">
         
-        <!-- Chitra aavaran -->
+        <!-- Image cover -->
         <div class="cover-wrapper">
             <div class="cover-animate" style="background-image: url('cover.jpg');"></div>
-            <!-- Sub-pixel gap lapvnyasathi gradient madhye -inset-2 add kele ahe -->
-            <div class="absolute -inset-2 bg-gradient-to-b from-transparent via-black/40 to-[#060609] z-10"></div>
+            <!-- Sub-pixel gap fix: Perfect color blending ke liye better gradient -->
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#060609]/60 to-[#060609] z-10"></div>
+            <!-- White line ko hamesha ke liye block karne wala solid bottom anchor -->
+            <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-[#060609] z-20"></div>
         </div>
 
         <!-- Profile Image -->
@@ -311,7 +313,7 @@
 
     <!-- Notification Modal - Optimized (No Blur Filter) -->
     <div id="custom-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 pointer-events-none">
-        <!-- Backdrop - Replaced blur with solid dark transparency to eliminate lag -->
+        <!-- Backdrop - Lag rokne ke liye blur ko dark transparency se replace kiya -->
         <div class="absolute inset-0 bg-black/80" onclick="closeNotification()"></div>
         <!-- Modal Card -->
         <div id="modal-content" class="relative bg-[#0a0a0d] border border-white/10 rounded-[24px] p-6 max-w-[320px] w-[85%] shadow-2xl transform scale-95 opacity-0 transition-all duration-300 flex flex-col items-center text-center pointer-events-auto">
@@ -337,10 +339,10 @@
             
             modalMessage.textContent = message;
             
-            // Unhide container
+            /* Container ko unhide karein */
             modal.classList.remove('hidden');
             
-            // Force browser reflow to enable transition
+            /* Transition enable karne ke liye browser reflow force karein */
             requestAnimationFrame(() => {
                 modal.classList.remove('opacity-0');
                 modal.classList.add('opacity-100', 'pointer-events-auto');
@@ -354,14 +356,14 @@
             const modal = document.getElementById('custom-modal');
             const modalContent = document.getElementById('modal-content');
             
-            // Fade out
+            /* Fade out karein */
             modal.classList.remove('opacity-100', 'pointer-events-auto');
             modal.classList.add('opacity-0');
             
             modalContent.classList.remove('scale-100', 'opacity-100');
             modalContent.classList.add('scale-95', 'opacity-0');
             
-            // Hide container after transition
+            /* Transition ke baad container hide karein */
             setTimeout(() => {
                 modal.classList.add('hidden');
             }, 300);
