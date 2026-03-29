@@ -32,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Global reset aur scrolling */
+        /* Global reset and scrolling */
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
@@ -47,7 +47,7 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Horizontal scrollbar ko safely chupayein */
+            overflow-x: hidden; /* Hide horizontal scrollbar safely */
             font-family: 'Inter', sans-serif;
             color: #ffffff;
             min-height: 100vh;
@@ -59,14 +59,13 @@
             align-items: center;
         }
 
-        /* Ambient Glow - Optimized (Koi filter nahi, sirf CSS gradients) */
+        /* Ambient Glow - Ultra Optimized for all browsers */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
             pointer-events: none;
             z-index: -1;
             opacity: 0.12; 
-            /* Hardware acceleration ko safely enable karein */
             transform: translateZ(0); 
         }
         .glow-1 {
@@ -84,7 +83,6 @@
         .glass-container {
             background: #060609;
             border: none !important;
-            /* Chrome/Brave par best FPS ke liye optimized shadow */
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.9); 
             border-radius: 2.8rem;
             width: 90%;
@@ -94,23 +92,23 @@
             padding-bottom: 2rem;
             margin-top: 3rem;
             margin-bottom: 0.5rem; 
-            transform: translate3d(0,0,0); /* Hardware acceleration */
-            backface-visibility: hidden; /* Sub-pixel rendering aur edge flickering ko rokne ke liye */
+            transform: translate3d(0,0,0); 
+            backface-visibility: hidden; 
             transform-style: preserve-3d;
         }
 
-        /* Image cover */
+        /* Cover Image Wrapper */
         .cover-wrapper {
             position: absolute;
-            top: -2px; 
-            left: -2px;
-            right: -2px;
-            width: calc(100% + 4px);
-            height: 178px; /* Gap chupane ke liye thodi extra height */
+            top: 0; 
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 175px; 
             overflow: hidden;
             z-index: 0;
             pointer-events: none;
-            background-color: #060609; /* Safed line (white line) rokne ke liye */
+            background-color: #060609;
         }
 
         .cover-animate {
@@ -118,7 +116,6 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            /* Sirf transform animate karein, will-change dhyan se use karein */
             will-change: transform;
             animation: panImage 40s ease-in-out infinite alternate;
         }
@@ -128,11 +125,39 @@
             100% { transform: scale(1.15) translate3d(-2%, -2%, 0); }
         }
 
-        /* Smooth button hover effects - Optimized */
+        /* Ultra-Smooth Animated Separator Line */
+        .separator-wrapper {
+            position: absolute;
+            top: 174px; /* 1px overlap to perfectly kill the white gap */
+            left: 0;
+            right: 0;
+            height: 3px;
+            z-index: 5; /* Stays below profile image (z-10) */
+            background-color: #060609;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(245, 167, 93, 0.4); /* Glow effect */
+        }
+
+        .separator-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, #d03a62, #f5a75d, #3f698c, #0077b5, #d03a62);
+            animation: flowLine 3s linear infinite;
+            transform: translateZ(0); /* Hardware Acceleration for Brave/Chrome */
+        }
+
+        @keyframes flowLine {
+            0% { transform: translateX(0) translateZ(0); }
+            100% { transform: translateX(-50%) translateZ(0); }
+        }
+
+        /* Smooth button hover effects */
         .btn-ultra {
             position: relative;
             overflow: hidden;
-            /* Zero lag ke liye simple transitions */
             transition: transform 0.2s ease-out, filter 0.2s ease-out;
             transform: translateZ(0); 
             border: none !important;
@@ -143,7 +168,6 @@
             filter: brightness(1.15);
         }
 
-        /* Scrollbar chupayein par functionality rakhein */
         ::-webkit-scrollbar {
             display: none;
         }
@@ -154,16 +178,15 @@
             transform: translateY(20px) translateZ(0); 
             animation: reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
         }
+        
         @keyframes reveal { 
             to { opacity: 1; transform: translateY(0) translateZ(0); } 
         }
 
-        /* Modal specific smooth transitions */
         #modal-content {
             transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease-out;
         }
         
-        /* Full scroll ke liye bottom padding */
         .footer-end {
             height: 25px; 
             width: 100%;
@@ -179,16 +202,18 @@
     <!-- Main Content Container -->
     <main class="glass-container flex flex-col items-center reveal-up z-10">
         
-        <!-- Image cover -->
+        <!-- Cover Image -->
         <div class="cover-wrapper">
             <div class="cover-animate" style="background-image: url('cover.jpg');"></div>
-            <!-- Sub-pixel gap fix: Perfect color blending ke liye better gradient -->
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#060609]/60 to-[#060609] z-10"></div>
-            <!-- White line ko hamesha ke liye block karne wala solid bottom anchor -->
-            <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-[#060609] z-20"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#060609]/40 to-[#060609] z-10"></div>
         </div>
 
-        <!-- Profile Image -->
+        <!-- Animated Glowing Separator Line -->
+        <div class="separator-wrapper">
+            <div class="separator-line"></div>
+        </div>
+
+        <!-- Profile Image (z-10 ensures it stays perfectly ON TOP of the animated line) -->
         <div class="relative mb-4 mt-24 z-10 px-6 w-full flex justify-center">
             <div class="w-[110px] h-[110px] rounded-full p-1 bg-[#060609] shadow-2xl relative flex items-center justify-center">
                 <div class="absolute inset-0 bg-black rounded-full"></div>
@@ -311,11 +336,9 @@
 
     </main>
 
-    <!-- Notification Modal - Optimized (No Blur Filter) -->
+    <!-- Notification Modal -->
     <div id="custom-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 pointer-events-none">
-        <!-- Backdrop - Lag rokne ke liye blur ko dark transparency se replace kiya -->
         <div class="absolute inset-0 bg-black/80" onclick="closeNotification()"></div>
-        <!-- Modal Card -->
         <div id="modal-content" class="relative bg-[#0a0a0d] border border-white/10 rounded-[24px] p-6 max-w-[320px] w-[85%] shadow-2xl transform scale-95 opacity-0 transition-all duration-300 flex flex-col items-center text-center pointer-events-auto">
             <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -339,10 +362,8 @@
             
             modalMessage.textContent = message;
             
-            /* Container ko unhide karein */
             modal.classList.remove('hidden');
             
-            /* Transition enable karne ke liye browser reflow force karein */
             requestAnimationFrame(() => {
                 modal.classList.remove('opacity-0');
                 modal.classList.add('opacity-100', 'pointer-events-auto');
@@ -356,14 +377,12 @@
             const modal = document.getElementById('custom-modal');
             const modalContent = document.getElementById('modal-content');
             
-            /* Fade out karein */
             modal.classList.remove('opacity-100', 'pointer-events-auto');
             modal.classList.add('opacity-0');
             
             modalContent.classList.remove('scale-100', 'opacity-100');
             modalContent.classList.add('scale-95', 'opacity-0');
             
-            /* Transition ke baad container hide karein */
             setTimeout(() => {
                 modal.classList.add('hidden');
             }, 300);
