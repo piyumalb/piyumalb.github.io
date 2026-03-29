@@ -32,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Global resets and scrolling */
+        /* Jagatik reset ani scrolling */
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
@@ -47,7 +47,7 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Hide horizontal scrollbar safely */
+            overflow-x: hidden; /* Aadvya scrollbar la surakshitpane lapva */
             font-family: 'Inter', sans-serif;
             color: #ffffff;
             min-height: 100vh;
@@ -59,16 +59,15 @@
             align-items: center;
         }
 
-        /* Ambient Glow - Optimized for Performance (Removed heavy filters) */
+        /* Ambient Glow - Atishay anukulit (Kontehi filter nahit, keval CSS gradients) */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
             pointer-events: none;
             z-index: -1;
-            /* Replaced expensive filter:blur with lower opacity and pure gradients to eliminate lag */
-            opacity: 0.15; 
-            will-change: transform;
-            transform: translateZ(0);
+            opacity: 0.12; 
+            /* Hardware acceleration la surakshitpane saksham kara */
+            transform: translateZ(0); 
         }
         .glow-1 {
             width: 80vw; height: 80vw;
@@ -81,11 +80,12 @@
             background: radial-gradient(circle, rgba(30, 90, 190, 0.8) 0%, transparent 60%);
         }
 
-        /* Main Container */
+        /* Mukhya container */
         .glass-container {
             background: #060609;
             border: none !important;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8); /* Optimized shadow for better FPS */
+            /* Chrome/Brave var uttam FPS sathi anukulit shadow */
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.9); 
             border-radius: 2.8rem;
             width: 90%;
             max-width: 410px;
@@ -94,22 +94,23 @@
             padding-bottom: 2rem;
             margin-top: 3rem;
             margin-bottom: 0.5rem; 
-            will-change: transform;
-            transform: translate3d(0,0,0);
-            /* Removed -webkit-mask-image as it causes severe lag on Chromium mobile browsers */
+            transform: translate3d(0,0,0); /* Hardware acceleration */
+            backface-visibility: hidden; /* Sub-pixel rendering aani edge flickering thambavnyasathi */
+            transform-style: preserve-3d;
         }
 
-        /* Image Cover */
+        /* Chitra aavaran */
         .cover-wrapper {
             position: absolute;
-            top: 0; 
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 175px;
+            top: -2px; 
+            left: -2px;
+            right: -2px;
+            width: calc(100% + 4px);
+            height: 178px; /* Gap lapvnyasathi thodi vadhiv unchi */
             overflow: hidden;
             z-index: 0;
             pointer-events: none;
+            background-color: #060609; /* Pandhri resha thambavnyasathi */
         }
 
         .cover-animate {
@@ -117,51 +118,52 @@
             height: 100%;
             background-size: cover;
             background-position: center;
+            /* Fakt transform animate kara, will-change kaljipurvak vapra */
             will-change: transform;
-            animation: panImage 40s linear infinite alternate;
+            animation: panImage 40s ease-in-out infinite alternate;
         }
         
         @keyframes panImage {
-            0% { transform: scale(1.1) translate3d(0, 0, 0); }
+            0% { transform: scale(1.1) translateZ(0); }
             100% { transform: scale(1.15) translate3d(-2%, -2%, 0); }
         }
 
-        /* Smooth Button Hover Effects */
+        /* Smooth button hover effects - Anukulit */
         .btn-ultra {
             position: relative;
             overflow: hidden;
-            transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1), filter 0.2s ease;
-            will-change: transform;
-            transform: translate3d(0,0,0); 
+            /* Shunya lag sathi sope transitions */
+            transition: transform 0.2s ease-out, filter 0.2s ease-out;
+            transform: translateZ(0); 
             border: none !important;
         }
 
         .btn-ultra:hover {
-            transform: scale(1.02) translateY(-2px) translate3d(0,0,0);
-            filter: brightness(1.1);
+            transform: scale(1.02) translateY(-2px) translateZ(0);
+            filter: brightness(1.15);
         }
 
-        /* Hide scrollbar but keep functionality */
+        /* Scrollbar lapva pan karyakshamta theva */
         ::-webkit-scrollbar {
             display: none;
         }
 
-        /* Reveal Animation */
+        /* Reveal animation */
         .reveal-up { 
             opacity: 0; 
-            transform: translateY(20px) translate3d(0,0,0); 
-            animation: reveal 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards; 
+            transform: translateY(20px) translateZ(0); 
+            animation: reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
         }
         @keyframes reveal { 
-            to { opacity: 1; transform: translateY(0) translate3d(0,0,0); } 
+            to { opacity: 1; transform: translateY(0) translateZ(0); } 
         }
 
-        /* Modal specific smooth transitions */
+        /* Modal vishishta smooth transitions */
         #modal-content {
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease-out;
         }
         
-        /* Bottom padding for full scroll */
+        /* Purna scroll sathi khalchi padding */
         .footer-end {
             height: 25px; 
             width: 100%;
@@ -174,27 +176,28 @@
     <div class="ambient-glow glow-1"></div>
     <div class="ambient-glow glow-2"></div>
 
-    <!-- Main Content Container -->
+    <!-- Mukhya Content Container -->
     <main class="glass-container flex flex-col items-center reveal-up z-10">
         
-        <!-- Image Cover -->
+        <!-- Chitra aavaran -->
         <div class="cover-wrapper">
             <div class="cover-animate" style="background-image: url('cover.jpg');"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#060609] z-10"></div>
+            <!-- Sub-pixel gap lapvnyasathi gradient madhye -inset-2 add kele ahe -->
+            <div class="absolute -inset-2 bg-gradient-to-b from-transparent via-black/40 to-[#060609] z-10"></div>
         </div>
 
         <!-- Profile Image -->
         <div class="relative mb-4 mt-24 z-10 px-6 w-full flex justify-center">
             <div class="w-[110px] h-[110px] rounded-full p-1 bg-[#060609] shadow-2xl relative flex items-center justify-center">
                 <div class="absolute inset-0 bg-black rounded-full"></div>
-                <img src="profileimage.jpg" class="w-full h-full object-cover rounded-full relative z-10 pointer-events-none" alt="Pasan">
+                <img src="profileimage.jpg" class="w-full h-full object-cover rounded-full relative z-10 pointer-events-none" alt="Pasan Piyumal">
             </div>
         </div>
 
         <!-- Identity -->
         <div class="text-center mb-10 w-full px-8 relative z-10 flex flex-col items-center">
             <h1 class="text-[25px] font-black tracking-tight text-white mb-1 drop-shadow-lg">Pasan Piyumal</h1>
-            <p class="text-[11px] text-gray-500 font-bold tracking-[0.3em] uppercase opacity-70">
+            <p class="text-[11px] text-gray-400 font-bold tracking-[0.3em] uppercase opacity-80">
                 Graphic Designer & Developer
             </p>
         </div>
@@ -306,10 +309,10 @@
 
     </main>
 
-    <!-- Notification Modal -->
+    <!-- Notification Modal - Optimized (No Blur Filter) -->
     <div id="custom-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 pointer-events-none">
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeNotification()"></div>
+        <!-- Backdrop - Replaced blur with solid dark transparency to eliminate lag -->
+        <div class="absolute inset-0 bg-black/80" onclick="closeNotification()"></div>
         <!-- Modal Card -->
         <div id="modal-content" class="relative bg-[#0a0a0d] border border-white/10 rounded-[24px] p-6 max-w-[320px] w-[85%] shadow-2xl transform scale-95 opacity-0 transition-all duration-300 flex flex-col items-center text-center pointer-events-auto">
             <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 text-white">
