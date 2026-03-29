@@ -32,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Global reset and scrolling */
+        /* Khawvel huap reset leh scrolling */
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
@@ -47,7 +47,7 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Hide horizontal scrollbar safely */
+            overflow-x: hidden; /* A kual zawng scrollbar him takin thukru rawh */
             font-family: 'Inter', sans-serif;
             color: #ffffff;
             min-height: 100vh;
@@ -59,7 +59,7 @@
             align-items: center;
         }
 
-        /* Ambient Glow - Ultra Optimized for all browsers */
+        /* Chhehvel Eng - Browser zawng zawng atan siamthat bik */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
@@ -79,7 +79,7 @@
             background: radial-gradient(circle, rgba(30, 90, 190, 0.8) 0%, transparent 60%);
         }
 
-        /* Main container */
+        /* Bawm pui */
         .glass-container {
             background: #060609;
             border: none !important;
@@ -97,7 +97,7 @@
             transform-style: preserve-3d;
         }
 
-        /* Cover Image Wrapper */
+        /* Kawm Milem Tuamtu */
         .cover-wrapper {
             position: absolute;
             top: 0; 
@@ -125,17 +125,17 @@
             100% { transform: scale(1.15) translate3d(-2%, -2%, 0); }
         }
 
-        /* Ultra-Smooth Animated Separator Line */
+        /* Tihhran Line Che Thei Mam Em Em */
         .separator-wrapper {
             position: absolute;
-            top: 174px; /* 1px overlap to perfectly kill the white gap */
+            top: 174px; /* 1px a inthuah a var awl awm tihbo nan */
             left: 0;
             right: 0;
             height: 3px;
-            z-index: 5; /* Stays below profile image (z-10) */
+            z-index: 5; /* Profile milem hnuai ah a awm (z-10) */
             background-color: #060609;
             overflow: hidden;
-            box-shadow: 0 0 15px rgba(245, 167, 93, 0.4); /* Glow effect */
+            box-shadow: 0 0 15px rgba(101, 67, 33, 0.4); /* Uk deuh eng effect */
         }
 
         .separator-line {
@@ -144,9 +144,11 @@
             left: 0;
             width: 200%;
             height: 100%;
-            background: linear-gradient(90deg, #d03a62, #f5a75d, #3f698c, #0077b5, #d03a62);
-            animation: flowLine 3s linear infinite;
-            transform: translateZ(0); /* Hardware Acceleration for Brave/Chrome */
+            /* Dum leh Uk inchiap */
+            background: linear-gradient(90deg, #000000, #654321, #000000, #654321, #000000);
+            /* Animation muang em em: 60s (Minute 1) */
+            animation: flowLine 60s linear infinite;
+            transform: translateZ(0); /* Brave/Chrome atan Hardware chakna */
         }
 
         @keyframes flowLine {
@@ -154,7 +156,7 @@
             100% { transform: translateX(-50%) translateZ(0); }
         }
 
-        /* Smooth button hover effects */
+        /* Button chung a mouse dah a effect mam */
         .btn-ultra {
             position: relative;
             overflow: hidden;
@@ -172,7 +174,7 @@
             display: none;
         }
 
-        /* Reveal animation */
+        /* Tihlan animation */
         .reveal-up { 
             opacity: 0; 
             transform: translateY(20px) translateZ(0); 
@@ -195,25 +197,25 @@
 </head>
 <body class="py-4">
 
-    <!-- Ambient background elements -->
+    <!-- Chhehvel background thil te -->
     <div class="ambient-glow glow-1"></div>
     <div class="ambient-glow glow-2"></div>
 
-    <!-- Main Content Container -->
+    <!-- Thil Awm Pui Bawm -->
     <main class="glass-container flex flex-col items-center reveal-up z-10">
         
-        <!-- Cover Image -->
+        <!-- Kawm Milem -->
         <div class="cover-wrapper">
             <div class="cover-animate" style="background-image: url('cover.jpg');"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#060609]/40 to-[#060609] z-10"></div>
         </div>
 
-        <!-- Animated Glowing Separator Line -->
+        <!-- Tihhran Line Che Thei Eng -->
         <div class="separator-wrapper">
             <div class="separator-line"></div>
         </div>
 
-        <!-- Profile Image (z-10 ensures it stays perfectly ON TOP of the animated line) -->
+        <!-- Profile Milem (z-10 hian line che thei chung ah a awmtir) -->
         <div class="relative mb-4 mt-24 z-10 px-6 w-full flex justify-center">
             <div class="w-[110px] h-[110px] rounded-full p-1 bg-[#060609] shadow-2xl relative flex items-center justify-center">
                 <div class="absolute inset-0 bg-black rounded-full"></div>
@@ -221,7 +223,7 @@
             </div>
         </div>
 
-        <!-- Identity -->
+        <!-- Nihna -->
         <div class="text-center mb-10 w-full px-8 relative z-10 flex flex-col items-center">
             <h1 class="text-[25px] font-black tracking-tight text-white mb-1 drop-shadow-lg">Pasan Piyumal</h1>
             <p class="text-[11px] text-gray-400 font-bold tracking-[0.3em] uppercase opacity-80">
@@ -229,7 +231,7 @@
             </p>
         </div>
 
-        <!-- Links Stack -->
+        <!-- Link Chhawmdawl -->
         <div class="w-full space-y-4 flex flex-col items-center relative z-10 px-6 gap-3.5">
 
             <a onclick="showNotification(event, 'This store is currently unavailable.')" class="group w-full p-5 bg-gradient-to-b from-[#d03a62] to-[#f5a75d] text-white rounded-[22px] flex items-center justify-between cursor-pointer btn-ultra">
@@ -311,7 +313,7 @@
             
         </div>
 
-        <!-- QR Code Section -->
+        <!-- QR Code Hmun -->
         <div class="mt-12 flex flex-col items-center relative z-10 pointer-events-none opacity-90">
             <div class="p-3 bg-[#0a0a0d] rounded-[24px] shadow-2xl border border-white/5 flex items-center justify-center" style="min-width: 125px; min-height: 125px;">
                 <img src="qr%20code.png" alt="QR Code" class="w-[90px] h-[90px] object-contain rounded-xl opacity-80" loading="lazy">
@@ -319,7 +321,7 @@
             <span class="text-[9px] text-gray-600 mt-4 font-black tracking-[0.3em] uppercase">Scan to Connect</span>
         </div>
 
-        <!-- Social Icons -->
+        <!-- Social Icon Te -->
         <div class="mt-10 flex gap-8 relative z-10">
             <a href="https://x.com/piyumalbherath" target="_blank" class="text-gray-600 hover:text-white transition-all duration-300">
                 <svg class="w-[18px] h-[18px]" viewBox="0 0 1200 1227" fill="currentColor">
@@ -336,7 +338,7 @@
 
     </main>
 
-    <!-- Notification Modal -->
+    <!-- Hriattirna Modal -->
     <div id="custom-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 pointer-events-none">
         <div class="absolute inset-0 bg-black/80" onclick="closeNotification()"></div>
         <div id="modal-content" class="relative bg-[#0a0a0d] border border-white/10 rounded-[24px] p-6 max-w-[320px] w-[85%] shadow-2xl transform scale-95 opacity-0 transition-all duration-300 flex flex-col items-center text-center pointer-events-auto">
@@ -349,11 +351,10 @@
         </div>
     </div>
 
-    <!-- Bottom Padding -->
+    <!-- Hnuai Padding -->
     <div class="footer-end"></div>
 
     <script>
-        /* Smooth Notification Logic */
         function showNotification(e, message) {
             if(e) e.preventDefault();
             const modal = document.getElementById('custom-modal');
@@ -388,7 +389,6 @@
             }, 300);
         }
 
-        /* Security Scripts */
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
         document.onkeydown = function(e) {
             if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) {
