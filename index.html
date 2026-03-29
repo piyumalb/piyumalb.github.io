@@ -2,7 +2,7 @@
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <!-- Zoom lock kora viewport tag eka -->
+    <!-- Viewport lock kora: Zooming ebong horizontal scroll block krar jonne -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Pasan Piyumal | Profile Links</title>
     
@@ -32,10 +32,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Prodorxhon thamanur kora */
+        /* Device compatibility & Side Lock fixes */
         html {
             width: 100%;
-            overflow-x: hidden; /* Pasher scroll bondho kora */
+            overflow-x: hidden; /* Patthata scroll bondho kora */
             background-color: #000000;
         }
 
@@ -54,12 +54,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Vertical scroll anumat kora */
+            /* Zoom lock krar jonne touch-action logic */
             touch-action: pan-y;
             transform: translate3d(0,0,0);
         }
 
-        /* Akaxer glow optimized */
+        /* Ambient glow background */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
@@ -80,10 +80,11 @@
             background: radial-gradient(circle, rgba(30, 90, 190, 0.4) 0%, transparent 70%);
         }
 
-        /* Glass container locked at sides */
+        /* Glass container locked at sides - NO BORDERS */
         .glass-container {
             background: #060609;
             border: none !important;
+            outline: none !important;
             box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 1);
             border-radius: 2.8rem;
             width: 90%;
@@ -92,19 +93,22 @@
             overflow: hidden;
             padding-bottom: 2.5rem;
             margin-top: 2rem;
-            margin-bottom: 2rem; /* Yatar icons er por site shesh hobe */
+            margin-bottom: 2rem; /* Social icons wala idala site shesh kora */
             will-change: transform;
             transform: translate3d(0,0,0);
+            /* Corner clipping fix */
             -webkit-mask-image: -webkit-radial-gradient(white, black);
         }
 
-        /* Cover seamless wrapper */
+        /* Cover Area Fix - Sudu ira fix krar jonne poddak zoom kara */
         .cover-wrapper {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 165px;
+            /* Poddak zoom kara sub-pixel gaps wahanur jonne */
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            width: calc(100% + 4px);
+            height: 167px;
             overflow: hidden;
             z-index: 0;
             pointer-events: none;
@@ -115,11 +119,13 @@
             height: 110%;
             background-size: cover;
             background-position: center;
+            /* 0.5mm wage zoom effect base scale eka poddak loku krar jonne */
+            transform: scale(1.02);
             animation: panImage 45s ease-in-out infinite alternate;
         }
         
         @keyframes panImage {
-            0% { transform: scale(1.0) translate3d(0, 0, 0); }
+            0% { transform: scale(1.02) translate3d(0, 0, 0); }
             100% { transform: scale(1.1) translate3d(-3%, -3%, 0); }
         }
 
@@ -144,6 +150,7 @@
             display: none;
         }
 
+        /* Reveal animations */
         .reveal-up { 
             opacity: 0; 
             transform: translateY(20px) translate3d(0,0,0); 
@@ -156,20 +163,21 @@
 </head>
 <body class="py-8">
 
-    <!-- Prodorxhon glow elements -->
+    <!-- Ambient glow background elements -->
     <div class="ambient-glow glow-1"></div>
     <div class="ambient-glow glow-2"></div>
 
-    <!-- Side lock kora main container -->
+    <!-- Main side-locked container -->
     <main class="glass-container flex flex-col items-center reveal-up z-10">
         
-        <!-- Cover chobi seamlessly blend kora -->
+        <!-- Seamless cover photo overlap kora hoyeche -->
         <div class="cover-wrapper">
             <div class="cover-animate" style="background-image: url('cover.jpg');"></div>
+            <!-- Dark gradient fade seamless krar jonne -->
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#060609] z-10"></div>
         </div>
 
-        <!-- Profile chobi area -->
+        <!-- Profile image area -->
         <div class="relative mb-4 mt-24 z-10 px-6 w-full flex justify-center">
             <div class="w-[110px] h-[110px] rounded-full p-1 bg-[#060609] shadow-2xl relative flex items-center justify-center">
                 <div class="absolute inset-0 bg-black rounded-full"></div>
@@ -177,7 +185,7 @@
             </div>
         </div>
 
-        <!-- Naam ebong Bio -->
+        <!-- Identity area -->
         <div class="text-center mb-10 w-full px-8 relative z-10 flex flex-col items-center">
             <h1 class="text-[25px] font-black tracking-tight text-white mb-1 drop-shadow-lg">Pasan Piyumal</h1>
             <p class="text-[11px] text-gray-500 font-bold tracking-[0.3em] uppercase opacity-70">
@@ -185,7 +193,7 @@
             </p>
         </div>
 
-        <!-- Links list kora hoyeche -->
+        <!-- Links stack -->
         <div class="w-full space-y-4 flex flex-col items-center relative z-10 px-6 gap-3.5">
 
             <a href="https://pdesigncreativestudios.on.drv.tw/P.Design-C/" target="_blank" class="group w-full p-5 bg-gradient-to-b from-[#d03a62] to-[#f5a75d] text-white rounded-[22px] flex items-center justify-between cursor-pointer btn-ultra">
@@ -256,7 +264,7 @@
             
         </div>
 
-        <!-- Scan code section -->
+        <!-- Scan code area -->
         <div class="mt-12 flex flex-col items-center relative z-10 pointer-events-none opacity-90">
             <div class="p-3 bg-[#0a0a0d] rounded-[24px] shadow-2xl border border-white/5 flex items-center justify-center" style="min-width: 125px; min-height: 125px;">
                 <img src="qr%20code.png" alt="QR Code" class="w-[90px] h-[90px] object-contain rounded-xl opacity-80" loading="lazy">
@@ -264,7 +272,7 @@
             <span class="text-[9px] text-gray-600 mt-4 font-black tracking-[0.3em] uppercase">Scan to Connect</span>
         </div>
 
-        <!-- Yatar icons - Aikhane site shesh hoyeche -->
+        <!-- Social Icons - Site ends here -->
         <div class="mt-10 flex gap-8 relative z-10">
             <a href="https://x.com/piyumalbherath" target="_blank" class="text-gray-600 hover:text-white transition-all duration-300">
                 <svg class="w-[18px] h-[18px]" viewBox="0 0 1200 1227" fill="currentColor">
@@ -282,7 +290,7 @@
     </main>
 
     <script>
-        /* Suraksha scripts loop chara */
+        /* Security scripts (No loop) */
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
         document.onkeydown = function(e) {
             if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) {
@@ -290,7 +298,7 @@
             }
         };
 
-        /* Zoom lock krar jonne event listeners */
+        /* Zoom lock krar jonne event listeners (iOS/Android compatible) */
         document.addEventListener('touchstart', function(event) {
             if (event.touches.length > 1) {
                 event.preventDefault();
