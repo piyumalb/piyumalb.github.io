@@ -2,7 +2,7 @@
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport lock kora: Zooming ebong horizontal scroll block krar jonne -->
+    <!-- Viewport lock: Zooming ebong horizontal scroll sampurnayen block krar jonne -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Pasan Piyumal | Profile Links</title>
     
@@ -32,34 +32,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Device compatibility & Side Lock fixes */
-        html {
+        /* Extreme Side Lock & Smoothness Fixes */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
             width: 100%;
-            overflow-x: hidden; /* Patthata scroll bondho kora */
+            max-width: 100vw;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Side lock kora */
             background-color: #000000;
         }
 
         body { 
             font-family: 'Inter', sans-serif;
             color: #ffffff;
-            margin: 0;
-            padding: 0;
-            width: 100%;
             min-height: 100vh;
-            overflow-x: hidden; /* Side lock kora */
             -webkit-user-select: none;
             user-select: none;
             -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeSpeed;
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Zoom lock krar jonne touch-action logic */
+            /* Zoom lock krar jonne */
             touch-action: pan-y;
             transform: translate3d(0,0,0);
         }
 
-        /* Ambient glow background */
+        /* Ambient Glow - Fixed performance */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
@@ -80,53 +83,50 @@
             background: radial-gradient(circle, rgba(30, 90, 190, 0.4) 0%, transparent 70%);
         }
 
-        /* Glass container locked at sides - NO BORDERS */
+        /* Main Container - NO BORDERS, LOCKED SIDES */
         .glass-container {
             background: #060609;
             border: none !important;
-            outline: none !important;
             box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 1);
             border-radius: 2.8rem;
             width: 90%;
             max-width: 410px;
             position: relative;
             overflow: hidden;
-            padding-bottom: 2.5rem;
-            margin-top: 2rem;
-            margin-bottom: 2rem; /* Social icons wala idala site shesh kora */
+            padding-bottom: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 0.5rem; /* Icons walin passe site eka end krar jonne */
             will-change: transform;
             transform: translate3d(0,0,0);
-            /* Corner clipping fix */
             -webkit-mask-image: -webkit-radial-gradient(white, black);
         }
 
-        /* Cover Area Fix - Sudu ira fix krar jonne poddak zoom kara */
+        /* Cover Area Fix - Sudu ira sampurnayen wahanur jonne zoom kara */
         .cover-wrapper {
             position: absolute;
-            /* Poddak zoom kara sub-pixel gaps wahanur jonne */
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            width: calc(100% + 4px);
-            height: 167px;
+            /* Negative margin eken edges wahala damma */
+            top: -5px; 
+            left: -5px;
+            right: -5px;
+            width: calc(100% + 10px);
+            height: 175px;
             overflow: hidden;
             z-index: 0;
             pointer-events: none;
         }
 
         .cover-animate {
-            width: 110%;
-            height: 110%;
+            width: 100%;
+            height: 100%;
             background-size: cover;
             background-position: center;
-            /* 0.5mm wage zoom effect base scale eka poddak loku krar jonne */
-            transform: scale(1.02);
-            animation: panImage 45s ease-in-out infinite alternate;
+            transform: scale(1.1); /* Zoomed in to hide borders */
+            animation: panImage 50s ease-in-out infinite alternate;
         }
         
         @keyframes panImage {
-            0% { transform: scale(1.02) translate3d(0, 0, 0); }
-            100% { transform: scale(1.1) translate3d(-3%, -3%, 0); }
+            0% { transform: scale(1.1) translate3d(0, 0, 0); }
+            100% { transform: scale(1.15) translate3d(-2%, -2%, 0); }
         }
 
         /* Ultra smooth buttons transition */
@@ -159,25 +159,31 @@
         @keyframes reveal { 
             to { opacity: 1; transform: translateY(0) translate3d(0,0,0); } 
         }
+
+        /* Site end padding */
+        .footer-end {
+            height: 15px; /* Oyage 0.5cm limit eka */
+            width: 100%;
+        }
     </style>
 </head>
-<body class="py-8">
+<body class="py-4">
 
     <!-- Ambient glow background elements -->
     <div class="ambient-glow glow-1"></div>
     <div class="ambient-glow glow-2"></div>
 
-    <!-- Main side-locked container -->
+    <!-- Side-locked container -->
     <main class="glass-container flex flex-col items-center reveal-up z-10">
         
-        <!-- Seamless cover photo overlap kora hoyeche -->
+        <!-- Seamless cover overlap -->
         <div class="cover-wrapper">
             <div class="cover-animate" style="background-image: url('cover.jpg');"></div>
-            <!-- Dark gradient fade seamless krar jonne -->
+            <!-- Dark gradient overlay -->
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#060609] z-10"></div>
         </div>
 
-        <!-- Profile image area -->
+        <!-- Profile image -->
         <div class="relative mb-4 mt-24 z-10 px-6 w-full flex justify-center">
             <div class="w-[110px] h-[110px] rounded-full p-1 bg-[#060609] shadow-2xl relative flex items-center justify-center">
                 <div class="absolute inset-0 bg-black rounded-full"></div>
@@ -185,7 +191,7 @@
             </div>
         </div>
 
-        <!-- Identity area -->
+        <!-- Identity -->
         <div class="text-center mb-10 w-full px-8 relative z-10 flex flex-col items-center">
             <h1 class="text-[25px] font-black tracking-tight text-white mb-1 drop-shadow-lg">Pasan Piyumal</h1>
             <p class="text-[11px] text-gray-500 font-bold tracking-[0.3em] uppercase opacity-70">
@@ -272,7 +278,7 @@
             <span class="text-[9px] text-gray-600 mt-4 font-black tracking-[0.3em] uppercase">Scan to Connect</span>
         </div>
 
-        <!-- Social Icons - Site ends here -->
+        <!-- Social Icons - End of content -->
         <div class="mt-10 flex gap-8 relative z-10">
             <a href="https://x.com/piyumalbherath" target="_blank" class="text-gray-600 hover:text-white transition-all duration-300">
                 <svg class="w-[18px] h-[18px]" viewBox="0 0 1200 1227" fill="currentColor">
@@ -289,8 +295,11 @@
 
     </main>
 
+    <!-- Site eka end wena padding eka -->
+    <div class="footer-end"></div>
+
     <script>
-        /* Security scripts (No loop) */
+        /* Security scripts */
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
         document.onkeydown = function(e) {
             if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) {
@@ -298,7 +307,7 @@
             }
         };
 
-        /* Zoom lock krar jonne event listeners (iOS/Android compatible) */
+        /* Zoom lock listeners */
         document.addEventListener('touchstart', function(event) {
             if (event.touches.length > 1) {
                 event.preventDefault();
